@@ -7,16 +7,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document("infoDataPersonal")
-public class InfoPersona {
+@Document("typeDocument")
+public class TypeDocument {
 
 	@Id
 	private String id;
-	@Indexed
-	private String docNumber;
-	private String firstName;
-	private String lastName;
-	private String telephoneNumber;
-	private String direction;
-	private String codeTypeDoc;
+	@Indexed(unique = true)
+	private String codeType;
+	private String nameType;
+	private String abrevia;
+	private Integer lengthType;
 }

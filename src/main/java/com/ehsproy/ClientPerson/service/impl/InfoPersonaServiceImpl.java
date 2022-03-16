@@ -1,10 +1,11 @@
 package com.ehsproy.ClientPerson.service.impl;
 
+
 import org.springframework.stereotype.Service;
 
 import com.ehsproy.ClientPerson.model.InfoPersona;
-import com.ehsproy.ClientPerson.repository.InfoPersonaRepository;
-import com.ehsproy.ClientPerson.service.InfoPersonaService;
+import com.ehsproy.ClientPerson.repository.IInfoPersonaRepository;
+import com.ehsproy.ClientPerson.service.IInfoPersonaService;
 
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
@@ -12,12 +13,11 @@ import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
-public class InfoPersonaServiceImpl implements InfoPersonaService {
+public class InfoPersonaServiceImpl implements IInfoPersonaService {
 
-	private InfoPersonaRepository repository;
+	private final IInfoPersonaRepository repository;
 	
 	public Flux<InfoPersona> findAll(){
-		
 		return repository.findAll();
 	}
 	
@@ -32,4 +32,10 @@ public class InfoPersonaServiceImpl implements InfoPersonaService {
 	public Mono<Void> deleteById(String id){
 		return repository.deleteById(id);
 	}
+
+	
+	public Mono<InfoPersona> findByDocNumber(String numDoc) {
+		return repository.findByDocNumber(numDoc);
+	}
+
 }
